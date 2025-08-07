@@ -1,8 +1,8 @@
-using BDD_Fronts.Middlewares;
+ï»¿using BDD_Fronts.Middlewares;
 
 namespace BDD_Fronts;
 /// <summary>
-/// ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg
+/// ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆ
 /// </summary>
 public class Program
 {
@@ -13,17 +13,17 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
-        /*** ˆË‘¶«’è‹` ***/
+        /*** ä¾å­˜æ€§å®šç¾© ***/
         Configs.SetupAppDependency.SettingDependencyInjection(
             builder.Configuration, builder.Services);
-        /*** Http Sessio‚ÉŠÖ‚·‚éİ’è ***/
+        /*** Http Sessioã«é–¢ã™ã‚‹è¨­å®š ***/
         builder.Services.AddControllersWithViews();
-        // ƒZƒbƒVƒ‡ƒ“‚Ìİ’è
+        // ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®è¨­å®š
         builder.Services.AddSession(options =>
         {
-            options.IdleTimeout = TimeSpan.FromMinutes(30); // ƒZƒbƒVƒ‡ƒ“‚Ì—LŒøŠúŠÔ‚ğİ’è
+            options.IdleTimeout = TimeSpan.FromMinutes(30); // ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®æœ‰åŠ¹æœŸé–“ã‚’è¨­å®š
             options.Cookie.HttpOnly = true;
-            options.Cookie.IsEssential = true; // GDPR‚É€‹’‚·‚é‚½‚ß‚É•K—v‚Èê‡
+            options.Cookie.IsEssential = true; // GDPRã«æº–æ‹ ã™ã‚‹ãŸã‚ã«å¿…è¦ãªå ´åˆ
         });
 
 
@@ -38,7 +38,7 @@ public class Program
             app.UseHsts();
         }
 
-        // ƒJƒXƒ^ƒ€ƒ~ƒhƒ‹ƒEƒFƒA‚ğ“o˜^‚·‚é
+        // ã‚«ã‚¹ã‚¿ãƒ ãƒŸãƒ‰ãƒ«ã‚¦ã‚§ã‚¢ã‚’ç™»éŒ²ã™ã‚‹
         app.UseMiddleware<ExceptionHandlingMiddleware>();
 
         app.UseHttpsRedirection();
@@ -48,7 +48,7 @@ public class Program
 
         app.UseAuthorization();
 
-        app.UseSession(); // Session‚Ì—˜—p
+        app.UseSession(); // Sessionã®åˆ©ç”¨
 
         app.MapControllerRoute(
             name: "default",
